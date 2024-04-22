@@ -1,17 +1,11 @@
-from dotenv import load_dotenv
-
-load_dotenv()
-import os
 from models import db, Sweet, Vendor, VendorSweet
-from flask_migrate import Migrate #type:ignore
-from flask import Flask, request, jsonify #type:ignore 
-from flask_cors import CORS #type:ignore
+from flask_migrate import Migrate 
+from flask import Flask, request, jsonify 
+from flask_cors import CORS 
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.environ.get("DATABASE_URL", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vendor_sweets_o84e_user:fuFnBZ4AQWyJ4sF6tCv0jIHmT7bSmdvu@dpg-cojbbagl6cac739uhh8g-a.oregon-postgres.render.com/vendor_sweets_o84e'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
